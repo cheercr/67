@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CHEER</title>
+<style>
+:root{--bg:#0b0713;--card:#161024;--line:#2a1f45;--pri:#8b5cf6;--pri2:#c4b5fd;--txt:#efeaff;--mut:#9a8fbb;--inc:#34d399;--exp:#f87171;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#2b1458,var(--bg) 55%);background-color:var(--bg);color:var(--txt);font-family:"Prompt","Noto Sans Thai",system-ui,sans-serif;min-height:100vh}
+.wrap{max-width:560px;margin:0 auto;padding:16px}
+h1{margin:8px 0 2px;font-size:32px;letter-spacing:6px;background:linear-gradient(90deg,#c4b5fd,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mut);font-size:13px;margin-bottom:14px}
+nav{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:5px;margin-bottom:14px}
+nav button{flex:1;border:0;background:none;color:var(--mut);padding:10px 4px;border-radius:10px;font:inherit;font-size:14px;cursor:pointer}
+nav button.on{background:var(--pri);color:#fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+input,select,textarea{width:100%;background:#0f0a1c;border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:10px;font:inherit;font-size:15px;margin-bottom:8px}
+textarea{min-height:110px;resize:vertical}
+.row{display:flex;gap:8px}
+.row>*{flex:1;min-width:0}
+.btn{width:100%;background:var(--pri);color:#fff;border:0;border-radius:10px;padding:11px;font:inherit;font-size:15px;cursor:pointer}
+.item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border:0}
+.item .t{flex:1;min-width:0;word-break:break-word}
+.item small{display:block;color:var(--mut);font-size:12px}
+.done .t{text-decoration:line-through;color:var(--mut)}
+.x{background:none;border:0;color:var(--mut);font-size:18px;cursor:pointer}
+input[type=checkbox]{width:20px;height:20px;margin:0;accent-color:var(--pri)}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.sum div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+.sum small{color:var(--mut);font-size:12px}
+.sum b{display:block;font-size:16px;margin-top:2px}
+.inc{color:var(--inc)}.exp{color:var(--exp)}
+.empty{color:var(--mut);text-align:center;padding:14px;font-size:14px}
+.entry{white-space:pre-wrap;word-break:break-word;margin:6px 0 0}
+body{background:linear-gradient(135deg,#07030f,#1a0838,#0b0713,#2d0b5a,#07030f);background-size:400% 400%;animation:bg 14s ease infinite;overflow-x:hidden}
+@keyframes bg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.wrap{position:relative;z-index:2}
+.orb{position:fixed;border-radius:50%;filter:blur(60px);opacity:.45;z-index:0;pointer-events:none;animation:float 9s ease-in-out infinite}
+.o1{width:260px;height:260px;background:#7c3aed;top:-60px;left:-70px}
+.o2{width:220px;height:220px;background:#d946ef;bottom:8%;right:-80px;animation-delay:-3s}
+.o3{width:180px;height:180px;background:#4f46e5;top:45%;left:-60px;animation-delay:-6s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-40px) scale(1.2)}}
+.star{position:fixed;width:3px;height:3px;background:#fff;border-radius:50%;z-index:1;pointer-events:none;animation:tw 2.5s ease-in-out infinite;box-shadow:0 0 6px 2px #c4b5fd}
+@keyframes tw{0%,100%{opacity:.1;transform:scale(.6)}50%{opacity:1;transform:scale(1.5)}}
+.led{display:flex;justify-content:space-between;padding:0 4px;margin-bottom:6px}
+.led i{width:10px;height:10px;border-radius:50%;animation:led 1.6s infinite}
+@keyframes led{0%,100%{background:#2a1f45;box-shadow:none}50%{background:var(--c);box-shadow:0 0 10px 3px var(--c)}}
+h1{background:linear-gradient(90deg,#c4b5fd,#f0abfc,#8b5cf6,#22d3ee,#c4b5fd);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite,glow 2.4s ease-in-out infinite;text-align:center;font-size:44px;letter-spacing:10px}
+@keyframes shine{to{background-position:300% 0}}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 6px #8b5cf6)}50%{filter:drop-shadow(0 0 18px #d946ef)}}
+.sub{text-align:center;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.5}}
+.card,nav,.sum div{backdrop-filter:blur(8px);animation:pop .4s ease both,edge 4s ease-in-out infinite}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}}
+@keyframes edge{0%,100%{border-color:#2a1f45;box-shadow:0 0 0 rgba(139,92,246,0)}50%{border-color:#8b5cf6;box-shadow:0 0 16px rgba(139,92,246,.45)}}
+nav button{transition:.25s}
+nav button.on{background:linear-gradient(90deg,#7c3aed,#d946ef,#7c3aed);background-size:200% 100%;animation:shine 3s linear infinite;box-shadow:0 0 16px #8b5cf6}
+.btn{position:relative;overflow:hidden;background:linear-gradient(90deg,#7c3aed,#c026d3,#7c3aed);background-size:200% 100%;animation:shine 3s linear infinite;transition:transform .15s,box-shadow .2s}
+.btn:hover{box-shadow:0 0 22px #a855f7;transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:sweep 2.8s infinite}
+@keyframes sweep{to{left:130%}}
+input:focus,select:focus,textarea:focus{outline:0;border-color:#a855f7;box-shadow:0 0 12px rgba(168,85,247,.6)}
+.item{animation:pop .35s ease both}
+.item:hover{background:rgba(139,92,246,.1)}
+.x:hover{color:#f0abfc;transform:rotate(90deg);transition:.2s}
+.inc,.exp{text-shadow:0 0 8px currentColor}
+.sum b{animation:pulse 2.5s ease-in-out infinite}
+.spark{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:99;animation:burst .8s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+.mlabel{color:var(--pri2);font-size:14px;margin-bottom:8px}
+.moods{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.mood{background:#0f0a1c;border:1px solid var(--line);border-radius:14px;padding:8px 2px;color:var(--mut);font:inherit;cursor:pointer;transition:.2s;display:flex;flex-direction:column;align-items:center;gap:2px}
+.mood span{font-size:28px;display:block;transition:.2s}
+.mood small{font-size:11px}
+.mood:hover span{transform:scale(1.3) rotate(-8deg)}
+.mood.sel{border-color:#d946ef;color:#fff;background:linear-gradient(160deg,#3b1580,#1a0838);box-shadow:0 0 16px #a855f7;animation:bounce 1.2s ease-in-out infinite}
+.mood.sel span{animation:wig 1s ease-in-out infinite}
+.me{font-size:20px;display:inline-block;animation:wig 2s ease-in-out infinite}
+@keyframes bounce{50%{transform:translateY(-4px)}}
+@keyframes wig{0%,100%{transform:rotate(-10deg) scale(1.15)}50%{transform:rotate(10deg) scale(1.3)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div id="stars"></div>
+<div class="wrap">
+<div class="led" id="led"></div>
+<h1>CHEER</h1>
+<div class="sub">แพลน · รายรับรายจ่าย · ไดอารี่</div>
+<nav id="nav"><button data-t="plan" class="on">แพลน</button><button data-t="money">รายรับ-จ่าย</button><button data-t="diary">ไดอารี่</button></nav>
+<div id="v"></div>
+</div>
+<script>
+var KEY="cheer_data_v1",D={plan:[],money:[],diary:[]},tab="plan";
+try{var s=localStorage.getItem(KEY);if(s)D=Object.assign(D,JSON.parse(s))}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}
+function esc(t){return String(t).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function today(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function fmt(n){return Number(n).toLocaleString("th-TH")}
+function $(i){return document.getElementById(i)}
+function id(){return Date.now()+Math.random()}
+function del(k,i){D[k]=D[k].filter(function(x){return x.id!==i});save();render()}
+function render(){
+var h="";
+if(tab=="plan"){
+h+='<div class="card"><input id="pt" placeholder="อยากทำอะไร..."><input id="pd" type="date" value="'+today()+'"><button class="btn" onclick="addPlan()">+ เพิ่มแพลน</button></div><div class="card">';
+var l=D.plan.slice().sort(function(a,b){return a.done-b.done||a.date.localeCompare(b.date)});
+h+=l.length?l.map(function(p){return '<div class="item '+(p.done?"done":"")+'"><input type="checkbox" '+(p.done?"checked":"")+' onchange="tog('+p.id+')"><div class="t">'+esc(p.text)+'<small>'+p.date+'</small></div><button class="x" onclick="del(\'plan\','+p.id+')">✕</button></div>'}).join(""):'<div class="empty">ยังไม่มีแพลน</div>';
+h+="</div>";
+}else if(tab=="money"){
+var i=0,e=0;D.money.forEach(function(m){m.type=="in"?i+=m.amt:e+=m.amt});
+h+='<div class="sum"><div><small>รายรับ</small><b class="inc">'+fmt(i)+'</b></div><div><small>รายจ่าย</small><b class="exp">'+fmt(e)+'</b></div><div><small>คงเหลือ</small><b>'+fmt(i-e)+'</b></div></div>';
+h+='<div class="card"><div class="row"><select id="mt"><option value="in">รายรับ</option><option value="out">รายจ่าย</option></select><input id="ma" type="number" inputmode="decimal" placeholder="จำนวนเงิน"></div><input id="mn" placeholder="รายการ (เช่น ค่าข้าว)"><input id="md" type="date" value="'+today()+'"><button class="btn" onclick="addMoney()">+ บันทึก</button></div><div class="card">';
+var m=D.money.slice().sort(function(a,b){return b.date.localeCompare(a.date)});
+h+=m.length?m.map(function(x){return '<div class="item"><div class="t">'+esc(x.note||"-")+'<small>'+x.date+'</small></div><b class="'+(x.type=="in"?"inc":"exp")+'">'+(x.type=="in"?"+":"-")+fmt(x.amt)+'</b><button class="x" onclick="del(\'money\','+x.id+')">✕</button></div>'}).join(""):'<div class="empty">ยังไม่มีรายการ</div>';
+h+="</div>";
+}else{
+h+='<div class="card"><div class="mlabel">วันนี้รู้สึกยังไง?</div><div class="moods">'+MOODS.map(function(m,i){return '<button class="mood'+(i===mood?" sel":"")+'" onclick="pick('+i+')"><span>'+m[0]+'</span><small>'+m[1]+'</small></button>'}).join("")+'</div><input id="dd" type="date" value="'+(dv||today())+'"><textarea id="dt" placeholder="วันนี้เป็นยังไงบ้าง...">'+esc(tv)+'</textarea><button class="btn" onclick="addDiary()">+ บันทึกไดอารี่</button></div>';
+var d=D.diary.slice().sort(function(a,b){return b.date.localeCompare(a.date)||b.id-a.id});
+h+=d.length?d.map(function(x){return '<div class="card"><div class="item" style="border:0;padding:0"><div class="t"><small style="color:var(--pri2)">'+(x.mood!=null&&MOODS[x.mood]?'<span class="me">'+MOODS[x.mood][0]+'</span> '+MOODS[x.mood][1]+' · ':"")+x.date+'</small></div><button class="x" onclick="del(\'diary\','+x.id+')">✕</button></div><p class="entry">'+esc(x.text)+'</p></div>'}).join(""):'<div class="empty">ยังไม่มีไดอารี่</div>';
+}
+$("v").innerHTML=h;
+}
+function addPlan(){var t=$("pt").value.trim();if(!t)return;D.plan.push({id:id(),text:t,date:$("pd").value||today(),done:0});save();render()}
+function tog(i){D.plan.forEach(function(p){if(p.id===i)p.done=p.done?0:1});save();render()}
+function addMoney(){var a=parseFloat($("ma").value);if(!(a>0))return;D.money.push({id:id(),type:$("mt").value,amt:a,note:$("mn").value.trim(),date:$("md").value||today()});save();render()}
+var MOODS=[["😆","ดีใจ"],["🥰","รัก"],["🤩","ตื่นเต้น"],["😐","เฉยๆ"],["😴","เหนื่อย"],["😢","เศร้า"],["😰","เครียด"],["😡","โมโห"]],mood=-1,dv="",tv="";
+function pick(i){dv=$("dd").value;tv=$("dt").value;mood=mood===i?-1:i;render()}
+function addDiary(){var t=$("dt").value.trim();if(!t)return;D.diary.push({id:id(),text:t,date:$("dd").value||today(),mood:mood>=0?mood:null});mood=-1;dv="";tv="";save();render()}
+$("nav").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;tab=b.dataset.t;[].forEach.call($("nav").children,function(x){x.classList.toggle("on",x===b)});render()});
+var cols=["#a855f7","#f0abfc","#22d3ee","#818cf8","#e879f9"];
+for(var k=0;k<20;k++){var l=document.createElement("i");l.style.setProperty("--c",cols[k%5]);l.style.animationDelay=(k*0.12)+"s";$("led").appendChild(l)}
+for(var k=0;k<40;k++){var st=document.createElement("div");st.className="star";st.style.left=Math.random()*100+"%";st.style.top=Math.random()*100+"%";st.style.animationDelay=(Math.random()*2.5)+"s";st.style.animationDuration=(1.5+Math.random()*2.5)+"s";$("stars").appendChild(st)}
+document.addEventListener("click",function(e){for(var k=0;k<14;k++){var p=document.createElement("div");p.className="spark";var a=Math.random()*6.28,r=30+Math.random()*60;p.style.left=e.clientX+"px";p.style.top=e.clientY+"px";p.style.background=cols[k%5];p.style.boxShadow="0 0 8px "+cols[k%5];p.style.setProperty("--dx",Math.cos(a)*r+"px");p.style.setProperty("--dy",Math.sin(a)*r+"px");document.body.appendChild(p);(function(q){setTimeout(function(){q.remove()},800)})(p)}});
+render();
+</script>
+</body>
+</html>
